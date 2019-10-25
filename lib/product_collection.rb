@@ -10,7 +10,6 @@ class ProductCollection
     film: {dir: 'films', class: Film},
     book: {dir: 'books', class: Book},
     disk: {dir: 'disks', class: Disk}
-
   }
 
   # Конструктор коллекции принимает на вход массив продуктов, но если ничего не
@@ -86,8 +85,6 @@ class ProductCollection
     when :amount
       # Если запросили сортировку по количеству
       @products.sort_by! { |product| product.amount }
-      puts @products
-      puts '----------------'
     end
 
     # Если запросили сортировку по возрастанию
@@ -99,14 +96,17 @@ class ProductCollection
     self
   end
 
+  # возвращаем цену товара
   def get_price(param)
     @products[param].price
   end
 
+  # возвращаем количество товара, уменьшенное на 1
   def get_new_amount(param)
     @products[param].amount = @products[param].amount.to_i - 1
   end
 
+  # возвращаем наличное количество товара
   def get_amount(param)
     @products[param].amount
   end
