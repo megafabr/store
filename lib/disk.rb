@@ -27,7 +27,6 @@ class Disk < Product
     "Альбом #{@performer} - «#{@title}», #{@genre}, #{@year}, #{super}"
   end
 
-
   def update(params)
     super
 
