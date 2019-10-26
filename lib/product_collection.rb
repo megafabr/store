@@ -111,7 +111,7 @@ class ProductCollection
     @products[param].amount
   end
 
-  def to_s
+  def numbered
     @to_s = []
     @products.each_with_index do|product, i|
       @to_s << "#{i+1}. #{product}"
