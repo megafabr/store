@@ -33,7 +33,8 @@ until choice == 0
 
   # предлагаем выбрать товары, их описание и наличие на складе 
   # и способ окончания процесса покупок
-  collection.to_a.each_with_index {|product, i| puts "#{i+1}. #{product}"}
+  # collection.to_a.each_with_index {|product, i| puts "#{i+1}. #{product}"}
+  puts collection.to_s
   puts "0. Выход"
 
   # если товар отсутствует
@@ -48,6 +49,7 @@ until choice == 0
       buy_amount = 0
     end
   end
+
 
   # если выбранный товар на складе, продолжаем покупать
   if choice != 0

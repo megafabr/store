@@ -103,11 +103,19 @@ class ProductCollection
 
   # возвращаем количество товара, уменьшенное на 1
   def get_new_amount(param)
-    @products[param].amount = @products[param].amount.to_i - 1
+    @products[param].amount = @products[param].amount - 1
   end
 
   # возвращаем наличное количество товара
   def get_amount(param)
     @products[param].amount
+  end
+
+  def to_s
+    @to_s = []
+    @products.each_with_index do|product, i|
+      @to_s << "#{i+1}. #{product}"
+    end
+    @to_s
   end
 end

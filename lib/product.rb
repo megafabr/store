@@ -7,7 +7,7 @@ class Product
 
   def initialize(params)
     @price = params[:price]
-    @amount = params[:amount]
+    @amount = params[:amount].to_i
   end
 
   def to_s
