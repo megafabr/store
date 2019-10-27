@@ -96,26 +96,12 @@ class ProductCollection
     self
   end
 
-  # возвращаем цену товара
-  def get_price(param)
-    @products[param].price
-  end
-
   # возвращаем количество товара, уменьшенное на 1
   def get_new_amount(param)
     @products[param].amount = @products[param].amount - 1
   end
 
-  # возвращаем наличное количество товара
-  def get_amount(param)
-    @products[param].amount
-  end
-
-  def numbered
-    @to_s = []
-    @products.each_with_index do|product, i|
-      @to_s << "#{i+1}. #{product}"
-    end
-    @to_s
+  def to_s
+    @products.map.with_index(1) {|product, i|"#{i}. #{product}"}.join("\n")
   end
 end
