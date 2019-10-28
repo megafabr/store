@@ -104,4 +104,8 @@ class ProductCollection
   def to_s
     @products.map.with_index(1) {|product, i|"#{i}. #{product}"}.join("\n")
   end
+
+  def product_by_index(choice)
+    @products[choice]
+  end
 end

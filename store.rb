@@ -25,7 +25,7 @@ collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 
 # Начинаем торговать
 shoping_list = []
-buys = 0
+my_buys = 0
 choice = -2
 until choice == -1
   puts "Что хотите купить:"
@@ -36,17 +36,15 @@ until choice == -1
   puts collection
   puts "0. Выход"
 
-  # если товар отсутствует нужно сделать выбор еще разamount
-  buy_amount = 1
-  while buy_amount > 0
+  # выбор номера товара
+  choice = STDIN.gets.to_i - 1
+  chosen_product = collection.product_by_index(choice)
+
+  # проверка на наличие товара, если товара нет, то снова выбор
+  while chosen_product.amount == 0
+    puts "Товар закончился. Выберете что-нибудь другое"
     choice = STDIN.gets.to_i - 1
-    buy_amount = collection.to_a[choice].amount
-    if buy_amount == 0
-      buy_amount = 1
-      puts "Товар закончился. Выберете что-нибудь другое"
-    else
-      buy_amount = 0
-    end
+    chosen_product = collection.product_by_index(choice)
   end
 
   # если выбранный товар на складе, продолжаем покупать
@@ -54,15 +52,14 @@ until choice == -1
     puts
 
     # уменьшили на единицу количество товара на складе, так как один экземпляр купили
-    collection.get_new_amount(choice)
-
     # цену купленного товара сложили с ранне купленным товаром
-    buy = collection.to_a[(choice)].price.to_i
-    buys += buy
+    buy = chosen_product.price.to_i
+    my_buys += buy
+    chosen_product.amount -= 1 if chosen_product.amount != 0
 
     # формируем перечень покупок
-    shoping_list << collection.to_a[choice]
-    puts "Вы выбрали: #{collection.to_a[choice]}"
+    shoping_list << chosen_product
+    puts "Вы выбрали: #{chosen_product}"
     puts
     puts "Всего товаров на сумму: #{buy} руб."
     puts
@@ -71,6 +68,6 @@ until choice == -1
     puts
     puts shoping_list
     puts
-    puts "С Вас - #{buys} руб. Спасибо за покупки!"
+    puts "С Вас - #{my_buys} руб. Спасибо за покупки!"
   end
 end
