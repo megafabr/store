@@ -102,6 +102,6 @@ class ProductCollection
   end
 
   def to_s
-    @products.map.with_index(1) {|product, i|"#{i}. #{product}"}.join("\n")
+    @products.map.with_index(1) { |product, i| "#{i}. #{product}" }.join("\n")
   end
 end
