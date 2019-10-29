@@ -41,10 +41,9 @@ until choice == -1
   chosen_product = collection.product_by_index(choice)
 
   # проверка на наличие товара, если товара нет, то снова выбор
-  while chosen_product.amount == 0
+  if chosen_product.amount == 0
     puts "Товар закончился. Выберете что-нибудь другое"
-    choice = STDIN.gets.to_i - 1
-    chosen_product = collection.product_by_index(choice)
+    next
   end
 
   # если выбранный товар на складе, продолжаем покупать
@@ -55,7 +54,7 @@ until choice == -1
     # цену купленного товара сложили с ранне купленным товаром
     buy = chosen_product.price.to_i
     my_buys += buy
-    chosen_product.amount -= 1 if chosen_product.amount != 0
+    chosen_product.amount -= 1
 
     # формируем перечень покупок
     shoping_list << chosen_product
@@ -63,11 +62,10 @@ until choice == -1
     puts
     puts "Всего товаров на сумму: #{buy} руб."
     puts
-  else
-    puts "Вы купили:"
-    puts
-    puts shoping_list
-    puts
-    puts "С Вас - #{my_buys} руб. Спасибо за покупки!"
   end
 end
+puts "Вы купили:"
+puts
+puts shoping_list
+puts
+puts "С Вас - #{my_buys} руб. Спасибо за покупки!"

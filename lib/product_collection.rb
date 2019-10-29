@@ -96,11 +96,6 @@ class ProductCollection
     self
   end
 
-  # возвращаем количество товара, уменьшенное на 1
-  def get_new_amount(param)
-    @products[param].amount = @products[param].amount - 1
-  end
-
   def to_s
     @products.map.with_index(1) { |product, i| "#{i}. #{product}" }.join("\n")
   end
