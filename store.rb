@@ -27,7 +27,7 @@ collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 shoping_list = []
 my_buys = 0
 choice = -2
-until choice == -1
+loop do
   puts "Что хотите купить:"
   puts
 
@@ -47,7 +47,7 @@ until choice == -1
   end
 
   # если выбранный товар на складе, продолжаем покупать
-  if choice != - 1
+  break if choice == - 1
     puts
 
     # уменьшили на единицу количество товара на складе, так как один экземпляр купили
@@ -62,7 +62,6 @@ until choice == -1
     puts
     puts "Всего товаров на сумму: #{buy} руб."
     puts
-  end
 end
 puts "Вы купили:"
 puts
