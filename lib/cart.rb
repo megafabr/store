@@ -1,8 +1,8 @@
 class Cart
-def initialize
-  @cart = []
-  @cart_price = 0
-end
+  def initialize
+    @cart = []
+    @cart_price = 0
+  end
 
   def next_choice_to_cart(chosen_product, price)
     @chosen_product = chosen_product
