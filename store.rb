@@ -19,14 +19,13 @@ require_relative 'lib/book'
 require_relative 'lib/film'
 require_relative 'lib/disk'
 require_relative 'lib/product_collection'
+require_relative 'lib/cart'
 
 # Создаем коллекцию продуктов)
 collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
 
-# Начинаем торговать
-shoping_list = []
-my_buys = 0
-choice = -2
+# Начинаем торговать, формируем корзину
+cart = Cart.new
 
 loop do
   puts "Что хотите купить:"
@@ -51,21 +50,13 @@ loop do
   break if choice == - 1
   puts
 
-  # уменьшили на единицу количество товара на складе, так как один экземпляр купили
-  # цену купленного товара сложили с ранне купленным товаром
-  buy = chosen_product.price.to_i
-  my_buys += buy
+  # формируем корзину покупок
+  cart.next_choice_to_cart(chosen_product, chosen_product.price.to_i)
+
+  # уменьшили на единицу количество товара на складе
   chosen_product.amount -= 1
 
-  # формируем перечень покупок
-  shoping_list << chosen_product
-  puts "Вы выбрали: #{chosen_product}"
-  puts
-  puts "Всего товаров на сумму: #{buy} руб."
-  puts
+  # выводим на печать купленный товар
+  puts cart
 end
-puts "Вы купили:"
-puts
-puts shoping_list
-puts
-puts "С Вас - #{my_buys} руб. Спасибо за покупки!"
+puts cart.print_cart
