@@ -51,7 +51,7 @@ loop do
   puts
 
   # формируем корзину покупок
-  cart.next_choice_to_cart(chosen_product, chosen_product.price.to_i)
+  cart.next_choice_to_cart(chosen_product)
 
   # уменьшили на единицу количество товара на складе
   chosen_product.amount -= 1
@@ -60,6 +60,5 @@ loop do
   puts cart
 end
 
-# выводим сумарный список покупок и финальную цену корзины
 puts cart.print_cart
 
