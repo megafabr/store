@@ -1,23 +1,32 @@
 class Cart
-  def initialize
-    @cart = []
-    @cart_price = 0
-  end
+def initialize
+  @products = []
+  # @cart_price = 0
+end
 
-  def next_choice_to_cart(chosen_product, price)
+  def next_choice_to_cart(chosen_product)
     @chosen_product = chosen_product
-    @purchase_price = price
-    @cart << @chosen_product
-    @cart_price += @purchase_price
+    @purchase_price = chosen_product.price
+    @products << chosen_product
+    # @cart_price += @purchase_price
   end
 
   def to_s
-    "Вы выбрали: #{@chosen_product}" + "\n\n" +
-    "Всего товаров на сумму: #{@purchase_price} руб." + "\n\n"
+    cart_price = @products.sum { |product| product.price.to_i }
+    page = <<-HTML
+    С Вас - #{cart_price} руб. Спасибо за покупку!
+    Вы выбрали: #{@chosen_product}
+
+    HTML
   end
 
   def print_cart
-    "Вы купили:" + "\n\n" + @cart.join("\n") + "\n\n" +
-    "С Вас - #{@cart_price} руб. Спасибо за покупки!"
+    cart_price = @products.sum { |product| product.price.to_i }
+    page = <<-HTML
+    Вы купили: 
+    #{@products.join("\n    ")}
+
+    С Вас - #{cart_price} руб. Спасибо за покупки!
+    HTML
   end
 end
