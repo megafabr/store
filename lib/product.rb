@@ -6,7 +6,7 @@ class Product
   attr_accessor :price, :amount
 
   def initialize(params)
-    @price = params[:price]
+    @price = params[:price].to_i
     @amount = params[:amount].to_i
   end
 
@@ -27,3 +27,4 @@ class Product
     raise NotImplementedError
   end
 end
+
