@@ -27,3 +27,4 @@ class Product
     raise NotImplementedError
   end
 end
+
