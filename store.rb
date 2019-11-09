@@ -1,3 +1,9 @@
+require_relative 'lib/product'
+require_relative 'lib/book'
+require_relative 'lib/film'
+require_relative 'lib/disk'
+require_relative 'lib/product_collection'
+require_relative 'lib/cart'
 # encoding: utf-8
 #
 # Программа-магазин книг, фильмов и дисков.
@@ -13,13 +19,6 @@ if Gem.win_platform?
     io.set_encoding(Encoding.default_external, Encoding.default_internal)
   end
 end
-
-require_relative 'lib/product'
-require_relative 'lib/book'
-require_relative 'lib/film'
-require_relative 'lib/disk'
-require_relative 'lib/product_collection'
-require_relative 'lib/cart'
 
 # Создаем коллекцию продуктов)
 collection = ProductCollection.from_dir(File.dirname(__FILE__) + '/data')
@@ -61,4 +60,3 @@ loop do
 end
 
 puts cart.print_cart
-
