@@ -14,14 +14,6 @@ end
 
   def to_s
     <<-HTML
-    С Вас - #{total_sum} руб. Спасибо за покупку!
-    Вы выбрали: #{@chosen_product}
-
-    HTML
-  end
-
-  def print_cart
-    <<-HTML
     Вы купили: 
     #{@products.join("\n    ")}
 
