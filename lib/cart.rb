@@ -1,4 +1,4 @@
-class Cart
+lass Cart
 def initialize
   @products = []
 end
@@ -13,11 +13,11 @@ end
   end
 
   def to_s
-    <<-HTML
-    Вы купили: 
-    #{@products.join("\n    ")}
-
-    С Вас - #{total_sum} руб. Спасибо за покупки!
-    HTML
+    <<~TEXT
+      Вы купили:
+      #{@products.join("\n      ")}
+    
+      С Вас - #{total_sum} руб. Спасибо за покупки!
+    TEXT
   end
 end
