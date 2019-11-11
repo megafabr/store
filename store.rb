@@ -56,11 +56,11 @@ loop do
   chosen_product.amount -= 1
 
   # выводим на печать купленный товар
-  puts <<-HTML
-    С Вас - #{cart.total_sum} руб. Спасибо за покупку!
-    Вы выбрали: #{chosen_product}
+  puts <<~TEXT
+      С Вас - #{cart.total_sum} руб. Спасибо за покупку!
+      Вы выбрали: #{chosen_product}
 
-  HTML
+  TEXT
 end
 
 puts cart
