@@ -15,7 +15,7 @@ end
   def to_s
     <<~TEXT
       Вы купили:
-      #{@products.join("\n      ")}
+      #{@products.join("\n")}
     
       С Вас - #{total_sum} руб. Спасибо за покупки!
     TEXT
